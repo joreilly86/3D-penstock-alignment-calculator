@@ -14,9 +14,12 @@ def calculate_angle(a, b, c):
 def main():
     st.title('3D Penstock Alignment Deflection Angle Calculator 🧮')
     
-    st.image('image.png',  width=400, caption='example of coordinates format in csv file')
+    st.image('image.png',  width=500, caption='example of coordinates format in csv file')
 
     st.markdown("""
+    ## Prepared by: James O'Reilly 📝
+    ## Date: 2023-06-28 📅
+    
     ## Deflection Angle Calculation
 
     The deflection angle between three points in a 3D space is calculated using the dot product and the cosine rule. The process is as follows:
