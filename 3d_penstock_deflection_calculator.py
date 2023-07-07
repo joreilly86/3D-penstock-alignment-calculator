@@ -47,6 +47,7 @@ def main():
         data['z'] = pd.to_numeric(data['z'])
 
         angles = []
+        supplementary_angles = []
         for i in range(1, len(data)-1):
             point1 = data.loc[i-1, ['x', 'y', 'z']].values
             point2 = data.loc[i, ['x', 'y', 'z']].values
@@ -54,9 +55,11 @@ def main():
 
             angle = calculate_angle(point1, point2, point3)
             angles.append(angle)
+            supplementary_angles.append(180 - angle)
 
         data = data.iloc[1:-1]
         data['angle'] = angles
+        data['supplementary_angle'] = supplementary_angles
 
         st.write(data)
 
