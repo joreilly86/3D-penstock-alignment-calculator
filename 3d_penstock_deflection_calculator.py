@@ -58,8 +58,8 @@ def main():
             supplementary_angles.append(180 - angle)
 
         data = data.iloc[1:-1]
-        data['angle'] = angles
-        data['supplementary_angle'] = supplementary_angles
+        data['angle (°)'] = angles
+        data['supplementary_angle (°)'] = supplementary_angles
 
         st.write(data)
 
