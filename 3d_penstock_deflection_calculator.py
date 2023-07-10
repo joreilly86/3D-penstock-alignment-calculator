@@ -24,7 +24,7 @@ def main():
 
     The deflection angle between three points in a 3D space is calculated using the dot product and the cosine rule. The process is as follows:
 
-    1. **Data Input**: The coordinates of each point along the penstock alignment are read from a CSV file. Each row in the CSV file represents a point, with 'x', 'y', and 'z' columns for the coordinates. Make sure you add these column names (x, y, z) to your CSV file. The CSV file can be uploaded using the file uploader below.
+    1. **Data Input**: The coordinates of each point along the penstock alignment are read from a CSV file. Each row in the CSV file represents a point, with 'x', 'y', and 'z' columns for the coordinates. Make sure you add these column names (x, y, z) to your CSV file as the first row (see screenshot above). The CSV file can be uploaded using the file uploader below.
 
     2. **Segment Creation**: For each set of three consecutive points (A, B, and C), two vectors are created: one from point A to B (vector AB) and another from point B to C (vector BC).
 
