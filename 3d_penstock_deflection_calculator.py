@@ -42,7 +42,6 @@ def main():
     uploaded_file = st.file_uploader("Upload CSV", type=['csv'])
     if uploaded_file is not None:
         data = pd.read_csv(uploaded_file)
-        st.write(data.columns.tolist())  # Print column names
         data['x'] = pd.to_numeric(data['x'])
         data['y'] = pd.to_numeric(data['y'])
         data['z'] = pd.to_numeric(data['z'])
