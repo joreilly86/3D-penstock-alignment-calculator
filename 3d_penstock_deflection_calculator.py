@@ -2,23 +2,31 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+def get_column_name(dataframe, possible_names):
+    """
+    Return the column name from the dataframe that matches one of the possible names.
+    If no match is found, return None.
+    """
+    for name in possible_names:
+        if name in dataframe.columns:
+            return name
+    return None
+
 def calculate_angle(a, b, c):
     ba = a - b
     bc = c - b
-
     cosine_angle = np.dot(ba, bc) / (np.linalg.norm(ba) * np.linalg.norm(bc))
     angle = np.arccos(cosine_angle)
-
     return np.degrees(angle)
 
 def main():
     st.title('3D Penstock Alignment Deflection Angle Calculator 🧮')
-    
+        
     st.image('image.png',  width=500, caption='example of coordinates format in csv file')
 
     st.markdown("""
     ## Prepared by: James O'Reilly 📝
-    ## Date: 2023-06-28 📅
+    ## Last Update: 2023-08-03 📅
     
     ## Deflection Angle Calculation
 
@@ -42,16 +50,25 @@ def main():
     uploaded_file = st.file_uploader("Upload CSV", type=['csv'])
     if uploaded_file is not None:
         data = pd.read_csv(uploaded_file)
-        data['x'] = pd.to_numeric(data['x'])
-        data['y'] = pd.to_numeric(data['y'])
-        data['z'] = pd.to_numeric(data['z'])
+        
+        x_col = get_column_name(data, ['x', 'X'])
+        y_col = get_column_name(data, ['y', 'Y'])
+        z_col = get_column_name(data, ['z', 'Z'])
+        
+        if None in [x_col, y_col, z_col]:
+            st.error("CSV file must contain columns named 'x', 'y', and 'z' (case insensitive).")
+            return
+        
+        data[x_col] = pd.to_numeric(data[x_col])
+        data[y_col] = pd.to_numeric(data[y_col])
+        data[z_col] = pd.to_numeric(data[z_col])
 
         angles = []
         supplementary_angles = []
         for i in range(1, len(data)-1):
-            point1 = data.loc[i-1, ['x', 'y', 'z']].values
-            point2 = data.loc[i, ['x', 'y', 'z']].values
-            point3 = data.loc[i+1, ['x', 'y', 'z']].values
+            point1 = data.loc[i-1, [x_col, y_col, z_col]].values
+            point2 = data.loc[i, [x_col, y_col, z_col]].values
+            point3 = data.loc[i+1, [x_col, y_col, z_col]].values
 
             angle = calculate_angle(point1, point2, point3)
             angles.append(angle)
