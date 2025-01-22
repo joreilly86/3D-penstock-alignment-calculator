@@ -41,6 +41,7 @@ The Streamlit app performs the following tasks:
 
 ### Data Input 📤
 - Accepts a CSV file containing 3D coordinates (`x`, `y`, `z`) for each point along the penstock alignment.
+- Check out the example csv file `penstock 03-08-23.csv`.
 
 ### Segment Creation 🔗
 - For each set of three consecutive points (`A`, `B`, `C`), two vectors (`AB`, `BC`) are generated.
