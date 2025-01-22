@@ -5,17 +5,6 @@ This repository contains a Streamlit app designed for calculating the deflection
 
 ---
 
-## Table of Contents 📑
-- [Overview](#overview-)
-- [Requirements](#requirements-)
-- [Usage](#usage-)
-- [Functionality](#functionality-)
-- [Author](#author-)
-- [Last Update](#last-update-)
-- [References](#references-)
-
----
-
 ## Requirements 🛠️
 
 - Python 3.x
@@ -63,9 +52,6 @@ The angle is converted from radians to degrees.
 
 ## Author 📝
 Prepared by: James O'Reilly
-
-## Last Update 📅
-Last updated on: 2023-08-03
 
 ---
 
